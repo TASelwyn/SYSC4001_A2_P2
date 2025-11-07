@@ -10,7 +10,13 @@ int main(void) {
         } else {
             printf("(C) Cycle number: %d\n", count);
         }
+
         count--;
-        usleep(500000);
+        usleep(50000);
+
+        // Exit if done counting
+        if (count < -500) {
+            return 0;
+        }
     }
 }

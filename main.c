@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/wait.h>
 #include "main.h"
 
 int main(void) {
@@ -10,15 +11,8 @@ int main(void) {
         execl("./proc2", "proc2", NULL);
         perror("children execution failed");
     } else {
-        int count = 0;
-        while (TRUE) {
-            if (count % 3 == 0) {
-                printf("(P) Cycle number: %d - %d is a multiple of 3\n", count, count);
-            } else {
-                printf("(P) Cycle number: %d\n", count);
-            }
-            count++;
-            usleep(500000);
-        }
+        // Let's wait for the child
+        wait(NULL);
+        return 0;
     }
 }
