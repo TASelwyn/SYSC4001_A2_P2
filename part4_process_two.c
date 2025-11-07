@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/shm.h>
-#include "main.h"
+#include "part4_main.h"
 #include <stdlib.h>
 
 int main(void) {
