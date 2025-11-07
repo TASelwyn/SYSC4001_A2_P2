@@ -4,7 +4,7 @@
 #include "common.h"
 
 int main(void) {
-    printf("SYSC 4001 - Assignment 2 - Part 2!\n");
+    printf("SYSC 4001 - Assignment 2 - Concurrent Linux!\n");
 
     const pid_t pid = fork();
     if (pid == 0) {
