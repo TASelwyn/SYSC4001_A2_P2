@@ -24,3 +24,10 @@ add_executable(part4_proc1 part4_proc1_101183163_101274266.c
 add_executable(part4_proc2 part4_proc2_101183163_101274266.c
         common.h)
 add_dependencies(part4_proc1 part4_proc2)
+
+# Part 5
+add_executable(part5_proc1 part5_proc1_101183163_101274266.c
+        common.h)
+add_executable(part5_proc2 part5_proc2_101183163_101274266.c
+        common.h)
+add_dependencies(part5_proc1 part5_proc2)
