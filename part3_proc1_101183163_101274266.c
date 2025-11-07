@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #include "common.h"
@@ -10,6 +11,7 @@ int main(void) {
     if (pid == 0) {
         execl("./part3_proc2", "part3_proc2", NULL);
         perror("children execution failed");
+        exit(EXIT_FAILURE);
     } else {
         // Let's wait for the child
         wait(NULL);
