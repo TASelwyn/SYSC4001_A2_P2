@@ -7,9 +7,11 @@
 
 #define TRUE 1
 #define FALSE 0
-#define SHM_KEY 0x3385
+
 #define MULTIPLE 3
 #define DELAY_MICROSECONDS 5000
+
+#define SHM_KEY 0x3385
 
 typedef struct {
     int multiple;

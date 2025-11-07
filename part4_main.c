@@ -5,7 +5,6 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include "common.h"
-
 #include <stdlib.h>
 
 int main(void) {
@@ -44,10 +43,21 @@ int main(void) {
         }
 
         if (shared->counter > 500) {
-            exit(EXIT_SUCCESS);
+            break;
         }
 
         shared->counter++;
         usleep(DELAY_MICROSECONDS);
     }
+
+    // Clean up shared
+    shmdt(shared);
+
+    int shmctlret = shmctl(shmid, IPC_RMID, NULL);
+    if (shmctlret < 0) {
+        perror("shmctl failed");
+        exit(EXIT_FAILURE);
+    }
+
+    exit(EXIT_SUCCESS);
 }
