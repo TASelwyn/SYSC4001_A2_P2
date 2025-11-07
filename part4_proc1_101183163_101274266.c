@@ -50,6 +50,9 @@ int main(void) {
         shared->counter++;
         usleep(DELAY_MICROSECONDS);
     }
+    printf("(P) Waiting for child to exit...\n");
+    wait(NULL);
+    printf("(P) Child has exited. Parent now exiting.\n");
 
     // Clean up shared
     shmdt(shared);
@@ -59,6 +62,6 @@ int main(void) {
         perror("shmctl failed");
         exit(EXIT_FAILURE);
     }
-
+    printf("(P) Goodbye.\n");
     exit(EXIT_SUCCESS);
 }
