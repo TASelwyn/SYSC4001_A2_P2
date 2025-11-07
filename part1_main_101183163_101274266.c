@@ -3,6 +3,13 @@
 #include <unistd.h>
 #include "common.h"
 
+/*
+ * SYSC 4001 - Assignment 2 – Part II (Concurrent Processes in Unix)
+ *
+ * Thomas Selwyn (101183163)
+ * Rayyan Kashif (101274266)
+ */
+
 int main(void) {
     printf("SYSC 4001 - Assignment 2 - Concurrent Linux!\n");
 
