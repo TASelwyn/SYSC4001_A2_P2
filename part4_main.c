@@ -4,12 +4,12 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
-#include "main.h"
+#include "common.h"
 
 #include <stdlib.h>
 
 int main(void) {
-    printf("SYSC 4001 - Assignment 2 - Part 2!\n");
+    printf("SYSC 4001 - Assignment 2 - Concurrent Linux!\n");
 
     int shmid = shmget(SHM_KEY, sizeof(SharedMemory), 0666|IPC_CREAT);
     if (shmid < 0) {
@@ -38,7 +38,7 @@ int main(void) {
         if (shared->counter > 100 && pid == 0) {
             pid = fork();
             if (pid == 0) {
-                execl("./proc2", "proc2", NULL);
+                execl("./part4_proc2", "part4_proc2", NULL);
                 perror("children execution failed");
             }
         }
