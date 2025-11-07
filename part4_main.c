@@ -4,7 +4,7 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
-#include "part4_main.h"
+#include "main.h"
 
 #include <stdlib.h>
 
