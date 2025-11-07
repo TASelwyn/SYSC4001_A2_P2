@@ -1,22 +1,36 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/wait.h>
+#include <sys/shm.h>
 #include "main.h"
+#include <stdlib.h>
 
 int main(void) {
-    int count = 0;
-    while (TRUE) {
-        if (count % 3 == 0) {
-            printf("(C) Cycle number: %d - %d is a multiple of 3\n", count, count);
-        } else {
-            printf("(C) Cycle number: %d\n", count);
-        }
+    int shmid = shmget(SHM_KEY, sizeof(SharedMemory), 0666);
+    if (shmid < 0) {
+        perror("shmget failed");
+        exit(EXIT_FAILURE);
+    }
 
-        count--;
-        usleep(50000);
+    SharedMemory *shared = shmat(shmid, NULL, 0);
+    if (shared == (void *) -1) {
+        perror("shmat failed");
+        exit(EXIT_FAILURE);
+    }
+
+    while (TRUE) {
+        if (shared->counter % shared->multiple == 0) {
+            printf("(C) Cycle number: %d - %d is a multiple of 3\n", shared->counter, shared->counter);
+        } else {
+            printf("(C) Cycle number: %d\n", shared->counter);
+        }
 
         // Exit if done counting
-        if (count < -500) {
-            return 0;
+        if (shared->counter > 500) {
+            exit(EXIT_SUCCESS);
         }
+
+        shared->counter++;
+        usleep(DELAY_MICROSECONDS);
     }
 }
