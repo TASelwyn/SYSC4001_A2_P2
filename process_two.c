@@ -20,7 +20,7 @@ int main(void) {
 
     while (TRUE) {
         if (shared->counter % shared->multiple == 0) {
-            printf("(C) Cycle number: %d - %d is a multiple of 3\n", shared->counter, shared->counter);
+            printf("(C) Cycle number: %d - %d is a multiple of %d\n", shared->counter, shared->counter, shared->multiple);
         } else {
             printf("(C) Cycle number: %d\n", shared->counter);
         }

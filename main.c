@@ -31,7 +31,7 @@ int main(void) {
     pid_t pid = 0;
     while (TRUE) {
         if (shared->counter % shared->multiple == 0) {
-            printf("(P) Cycle number: %d - %d is a multiple of 3\n", shared->counter, shared->counter);
+            printf("(P) Cycle number: %d - %d is a multiple of %d\n", shared->counter, shared->counter, shared->multiple);
         } else {
             printf("(P) Cycle number: %d\n", shared->counter);
         }
