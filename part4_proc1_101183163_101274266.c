@@ -39,6 +39,7 @@ int main(void) {
             if (pid == 0) {
                 execl("./part4_proc2", "part4_proc2", NULL);
                 perror("children execution failed");
+                exit(EXIT_FAILURE);
             }
         }
 
