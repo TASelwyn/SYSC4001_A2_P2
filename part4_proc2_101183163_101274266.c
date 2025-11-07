@@ -36,12 +36,6 @@ int main(void) {
     // Clean up shared
     shmdt(shared);
 
-    int shmctlret = shmctl(shmid, IPC_RMID, NULL);
-    if (shmctlret < 0) {
-        perror("shmctl failed");
-        exit(EXIT_FAILURE);
-    }
-
     exit(EXIT_SUCCESS);
 
 }
